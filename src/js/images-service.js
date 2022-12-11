@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { loadMoreBtn } from '../index';
 
-const API_KEY = '31477938-fd248c01ea14c0dbe5bfc1d84';
+const API_KEY = '31859121-159dafa84456e92063f4b1f26';
 const BASE_URL = 'https://pixabay.com/api';
 
 export default class ImagesApiService {
@@ -17,13 +17,14 @@ export default class ImagesApiService {
 
     try {
       loadMoreBtn.disable();
-      const url = `${BASE_URL}/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`;
-      const response = await axios.get(url);
+      const promise = await axios.get(
+        `${BASE_URL}/?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
+      );
 
       loadMoreBtn.enable();
       this.incrementPage();
 
-      return response.data;
+      return promise.data;
     } catch (error) {
       return Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
