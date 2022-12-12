@@ -48,11 +48,11 @@ function galleryTpl(gallery) {
         comments,
         downloads,
       }) => {
-        return ` <div class="gallery__item">
-      <div class="img-box">
-        <a class="gallery__link" href="${largeImg}">
+        return ` <div class="photo__item">
+      <div class="photo-card">
+        <a class="photo__link" href="${largeImg}">
           <img
-            class="gallery__image"
+            class="photo__image"
             src="${previewImg}"
             alt="Tags: ${tags}"
             loading="lazy"
